@@ -10,6 +10,14 @@ class UserModel {
   final DateTime createdAt;
   final DateTime updatedAt;
 
+  // New profile fields
+  final String? address;
+  final String? pinCode;
+  final String? city;
+  final String? state;
+  final int? age;
+  final String? gender;
+
   // Extensible attributes - store any additional data here
   final Map<String, dynamic> extraAttributes;
 
@@ -22,6 +30,12 @@ class UserModel {
     this.role = 'user',
     required this.createdAt,
     required this.updatedAt,
+    this.address,
+    this.pinCode,
+    this.city,
+    this.state,
+    this.age,
+    this.gender,
     this.extraAttributes = const {},
   });
 
@@ -37,6 +51,12 @@ class UserModel {
       'role',
       'created_at',
       'updated_at',
+      'address',
+      'pin_code',
+      'city',
+      'state',
+      'age',
+      'gender',
     };
 
     // Extract extra attributes (any field not in knownFields)
@@ -56,6 +76,12 @@ class UserModel {
       updatedAt: json['updated_at'] != null
           ? DateTime.parse(json['updated_at'] as String)
           : DateTime.now(),
+      address: json['address'] as String?,
+      pinCode: json['pin_code'] as String?,
+      city: json['city'] as String?,
+      state: json['state'] as String?,
+      age: json['age'] as int?,
+      gender: json['gender'] as String?,
       extraAttributes: extraAttributes,
     );
   }
@@ -71,6 +97,12 @@ class UserModel {
       'role': role,
       'created_at': createdAt.toIso8601String(),
       'updated_at': updatedAt.toIso8601String(),
+      'address': address,
+      'pin_code': pinCode,
+      'city': city,
+      'state': state,
+      'age': age,
+      'gender': gender,
     };
 
     // Add extra attributes
@@ -89,6 +121,12 @@ class UserModel {
     String? role,
     DateTime? createdAt,
     DateTime? updatedAt,
+    String? address,
+    String? pinCode,
+    String? city,
+    String? state,
+    int? age,
+    String? gender,
     Map<String, dynamic>? extraAttributes,
   }) {
     return UserModel(
@@ -100,6 +138,12 @@ class UserModel {
       role: role ?? this.role,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      address: address ?? this.address,
+      pinCode: pinCode ?? this.pinCode,
+      city: city ?? this.city,
+      state: state ?? this.state,
+      age: age ?? this.age,
+      gender: gender ?? this.gender,
       extraAttributes: extraAttributes ?? this.extraAttributes,
     );
   }

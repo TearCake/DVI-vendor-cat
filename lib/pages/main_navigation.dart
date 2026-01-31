@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:dreamventz/pages/home_page.dart';
 import 'package:dreamventz/pages/bookings_page.dart';
 import 'package:dreamventz/pages/history_page.dart';
-import 'package:dreamventz/pages/profile_page.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -14,12 +13,7 @@ class MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [
-    HomePage(),
-    BookingsPage(),
-    HistoryPage(),
-    ProfilePage(),
-  ];
+  final List<Widget> _pages = [HomePage(), BookingsPage(), HistoryPage()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -45,7 +39,6 @@ class _MainNavigationState extends State<MainNavigation> {
             label: 'Bookings',
           ),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
     );

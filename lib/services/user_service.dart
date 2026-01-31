@@ -37,6 +37,12 @@ class UserService {
     String? fullName,
     String? phone,
     String? avatarUrl,
+    String? address,
+    String? pinCode,
+    String? city,
+    String? state,
+    int? age,
+    String? gender,
     Map<String, dynamic>? extraAttributes,
   }) async {
     try {
@@ -45,6 +51,12 @@ class UserService {
       if (fullName != null) updateData['full_name'] = fullName;
       if (phone != null) updateData['phone'] = phone;
       if (avatarUrl != null) updateData['avatar_url'] = avatarUrl;
+      if (address != null) updateData['address'] = address;
+      if (pinCode != null) updateData['pin_code'] = pinCode;
+      if (city != null) updateData['city'] = city;
+      if (state != null) updateData['state'] = state;
+      if (age != null) updateData['age'] = age;
+      if (gender != null) updateData['gender'] = gender;
 
       // Add extra attributes if provided
       if (extraAttributes != null) {

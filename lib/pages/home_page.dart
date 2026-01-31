@@ -7,6 +7,7 @@ import 'package:dreamventz/components/carasol.dart';
 import 'package:dreamventz/components/services_tile.dart';
 import 'package:dreamventz/components/trending_tile.dart';
 import 'package:dreamventz/pages/photography_page.dart';
+import 'package:dreamventz/pages/user_profile_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -212,70 +213,120 @@ class _HomePageState extends State<HomePage>
               //topbar
               Container(
                 padding: EdgeInsets.only(
-                  top: 60, // Increased for reachability
+                  top: 50, // Reduced for compact look
                   left: 24,
                   right: 24,
-                  bottom: 25,
+                  bottom: 16,
                 ),
                 width: double.infinity,
                 decoration: BoxDecoration(color: Color(0xff0c1c2c)),
-                child: Column(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      isLoadingUser
-                          ? "Hello 👋🏻"
-                          : "${_getGreeting()},\n$userName 👋🏻", // Added newline for emphasis
-                      style: GoogleFonts.urbanist(
-                        fontSize: 34, // Much larger for One UI look
-                        fontWeight: FontWeight.w800, // Extra bold
-                        color: Colors.white,
-                        height: 1.2,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Text("Location"),
-                              content: Text(
-                                "Change location feature coming soon!",
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text("OK"),
+                    // Left side - Greeting and Location
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            isLoadingUser
+                                ? "Hello 👋🏻"
+                                : "${_getGreeting()}, $userName 👋🏻",
+                            style: GoogleFonts.urbanist(
+                              fontSize: 22, // Reduced for compact look
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                              height: 1.3,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          SizedBox(height: 4),
+                          GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text("Location"),
+                                    content: Text(
+                                      "Change location feature coming soon!",
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: Text("OK"),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.location_on,
+                                  color: Color.fromARGB(255, 212, 175, 55),
+                                  size: 18,
+                                ),
+                                SizedBox(width: 4),
+                                Text(
+                                  "Mumbai",
+                                  style: GoogleFonts.urbanist(
+                                    color: Colors.white70,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.keyboard_arrow_down,
+                                  color: Colors.white70,
+                                  size: 18,
                                 ),
                               ],
-                            );
-                          },
-                        );
-                      },
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: Color.fromARGB(255, 212, 175, 55),
-                            size: 20,
-                          ),
-                          SizedBox(width: 5),
-                          Text(
-                            "Mumbai",
-                            style: GoogleFonts.urbanist(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
                             ),
                           ),
-                          SizedBox(width: 3),
-                          Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.white,
-                            size: 20,
-                          ),
                         ],
+                      ),
+                    ),
+                    // Right side - Profile Icon
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UserProfilePage(),
+                          ),
+                        );
+                      },
+                      child: Hero(
+                        tag: 'profile_avatar',
+                        child: Container(
+                          width: 46,
+                          height: 46,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xff1a2d40),
+                            border: Border.all(
+                              color: Color.fromARGB(255, 212, 175, 55),
+                              width: 2,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                blurRadius: 8,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: Icon(
+                            Icons.person,
+                            color: Color.fromARGB(255, 212, 175, 55),
+                            size: 24,
+                          ),
+                        ),
                       ),
                     ),
                   ],
