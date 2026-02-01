@@ -7,6 +7,7 @@ import 'package:dreamventz/components/carasol.dart';
 import 'package:dreamventz/components/services_tile.dart';
 import 'package:dreamventz/components/trending_tile.dart';
 import 'package:dreamventz/pages/photography_page.dart';
+import 'package:dreamventz/pages/vendor_details_page.dart';
 import 'package:dreamventz/pages/user_profile_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -432,7 +433,7 @@ class _HomePageState extends State<HomePage>
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => PhotographyPage(
+                                builder: (context) => VendorDetailsPage(
                                   categoryName: 'Photography',
                                 ),
                               ),
@@ -442,13 +443,13 @@ class _HomePageState extends State<HomePage>
                         SizedBox(width: 10),
                         ServicesTile(
                           icon: Icons.restaurant,
-                          label: "     Catering     ",
+                          label: "Catering",
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    PhotographyPage(categoryName: 'Catering'),
+                                    VendorDetailsPage(categoryName: 'Catering'),
                               ),
                             );
                           },
@@ -462,7 +463,7 @@ class _HomePageState extends State<HomePage>
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    PhotographyPage(categoryName: 'Music'),
+                                    VendorDetailsPage(categoryName: 'Music'),
                               ),
                             );
                           },
@@ -475,8 +476,9 @@ class _HomePageState extends State<HomePage>
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    PhotographyPage(categoryName: 'Decoration'),
+                                builder: (context) => VendorDetailsPage(
+                                  categoryName: 'Decoration',
+                                ),
                               ),
                             );
                           },
@@ -489,8 +491,9 @@ class _HomePageState extends State<HomePage>
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    PhotographyPage(categoryName: 'Logistics'),
+                                builder: (context) => VendorDetailsPage(
+                                  categoryName: 'Logistics',
+                                ),
                               ),
                             );
                           },
