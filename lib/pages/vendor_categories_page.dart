@@ -88,6 +88,7 @@ class _VendorCategoriesPageState extends State<VendorCategoriesPage> {
                             MaterialPageRoute(
                               builder: (context) => PhotographyPage(
                                 categoryName: category['name'] ?? '',
+                                categoryId: category['id'] as int,
                               ),
                             ),
                           );

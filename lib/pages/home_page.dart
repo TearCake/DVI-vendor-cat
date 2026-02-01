@@ -434,6 +434,7 @@ class _HomePageState extends State<HomePage>
                               MaterialPageRoute(
                                 builder: (context) => PhotographyPage(
                                   categoryName: 'Photography',
+                                  categoryId: 1,
                                 ),
                               ),
                             );
@@ -442,13 +443,15 @@ class _HomePageState extends State<HomePage>
                         SizedBox(width: 10),
                         ServicesTile(
                           icon: Icons.restaurant,
-                          label: "     Catering     ",
+                          label: "     Caterers     ",
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    PhotographyPage(categoryName: 'Catering'),
+                                builder: (context) => PhotographyPage(
+                                  categoryName: 'Caterers',
+                                  categoryId: 4,
+                                ),
                               ),
                             );
                           },
@@ -456,13 +459,15 @@ class _HomePageState extends State<HomePage>
                         SizedBox(width: 10),
                         ServicesTile(
                           icon: Icons.music_note,
-                          label: "       Music       ",
+                          label: "   DJ & Bands   ",
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    PhotographyPage(categoryName: 'Music'),
+                                builder: (context) => PhotographyPage(
+                                  categoryName: 'DJ & Bands',
+                                  categoryId: 5,
+                                ),
                               ),
                             );
                           },
@@ -470,27 +475,31 @@ class _HomePageState extends State<HomePage>
                         SizedBox(width: 10),
                         ServicesTile(
                           icon: Icons.star,
-                          label: "   Decoration   ",
+                          label: "   Decoraters   ",
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    PhotographyPage(categoryName: 'Decoration'),
+                                builder: (context) => PhotographyPage(
+                                  categoryName: 'Decoraters',
+                                  categoryId: 6,
+                                ),
                               ),
                             );
                           },
                         ),
                         SizedBox(width: 10),
                         ServicesTile(
-                          icon: Icons.local_shipping,
-                          label: "     Logistics     ",
+                          icon: Icons.brush,
+                          label: "  Mehndi Artist  ",
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    PhotographyPage(categoryName: 'Logistics'),
+                                builder: (context) => PhotographyPage(
+                                  categoryName: 'Mehndi Artist',
+                                  categoryId: 2,
+                                ),
                               ),
                             );
                           },
